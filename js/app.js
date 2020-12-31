@@ -48,13 +48,14 @@ const makeDeck = () => {
   }
 
 const startButton=document.querySelector('#start')
-const myDeck=makeDeck();
+let myDeck=[]
 const drawButton=document.querySelector('#draw')
 const card=document.querySelector('#card')
 let ctx = card.getContext("2d");
 startButton.addEventListener('click', function() {
 	startButton.innerText = 'Restart Game';
     //document.body.style.backgroundColor = 'red';
+    myDeck=makeDeck();
     myDeck.initializeDeck();
     myDeck.shuffle();
     ctx.clearRect(0,0,card.width,card.height)
@@ -86,7 +87,8 @@ drawButton.addEventListener('click', function() {
     }
     ctx.fillText(drawnCard.value,108,50);
     //ctx.strokeText(drawnCard.suit,100,100)  
-    console.log(img.src)        
+    console.log(img.src)      
+    console.log(myDeck)  
     img.onload = () => {  
               ctx.drawImage(img, 62, 62);
     };
